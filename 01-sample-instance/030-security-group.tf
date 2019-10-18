@@ -1,5 +1,5 @@
-resource "azurerm_network_security_group" "generic" {
-  name                = "generic"
+resource "azurerm_network_security_group" "http" {
+  name                = "http"
   location            = azurerm_resource_group.generic.location
   resource_group_name = azurerm_resource_group.generic.name
 
@@ -18,7 +18,7 @@ resource "azurerm_network_security_group" "generic" {
 
   security_rule {
     name                       = "http"
-    description                = "Allow hHTTP access"
+    description                = "Allow HTTP access"
     priority                   = 110
     direction                  = "Inbound"
     access                     = "Allow"

@@ -1,3 +1,10 @@
+resource "azurerm_public_ip" "http" {
+  name                = "http-pip"
+  location            = azurerm_resource_group.generic.location
+  resource_group_name = azurerm_resource_group.generic.name
+  allocation_method   = "Dynamic"
+}
+
 resource "azurerm_network_interface" "http" {
   name                = "http-nic"
   location            = azurerm_resource_group.generic.location
@@ -7,6 +14,7 @@ resource "azurerm_network_interface" "http" {
     name                          = "testconfiguration1"
     subnet_id                     = azurerm_subnet.http.id
     private_ip_address_allocation = "Dynamic"
+    public_ip_address_id          = azurerm_public_ip.http.id
   }
 }
 
@@ -37,6 +45,7 @@ resource "azurerm_virtual_machine" "http" {
     computer_name  = "hostname"
     admin_username = "testadmin"
     admin_password = "Password1234!"
+    custom_data    = file("scripts/first-boot.sh")
   }
 
   os_profile_linux_config {
