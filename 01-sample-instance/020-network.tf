@@ -1,8 +1,3 @@
-resource "azurerm_resource_group" "generic" {
-  name     = "group-generic"
-  location = "North Europe"
-}
-
 # Vpc creation
 resource "azurerm_virtual_network" "generic" {
   name                = "network-generic"
