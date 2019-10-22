@@ -1,6 +1,6 @@
 # How to
 
-![infra sample-server](../img/02-instance-with-volume.png "infra sample-server")
+![infra sample-server](../img/03-instance-with-multiple-network.png "infra sample-server")
 
 ### Create stack
 
